@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(value="server",fallback=GetServiceHystrix.class)
 public interface GetService {
 
-    @RequestMapping(method = RequestMethod.POST, value = "/test")
+    @RequestMapping(method = RequestMethod.GET,value = "/test")
     public String getTest();
 }
