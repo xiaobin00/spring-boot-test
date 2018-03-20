@@ -14,7 +14,7 @@ public class TestController {
     @Autowired
     TestService testService;
     @RequestMapping(value = "/hi")
-    public String hi(@RequestParam String name){
-        return testService.hiService(name);
+    public String hi(@RequestParam String id){
+        return testService.hiService(id);
     }
 }

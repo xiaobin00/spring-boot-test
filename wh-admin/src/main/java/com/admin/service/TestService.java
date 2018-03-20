@@ -13,7 +13,7 @@ public class TestService
     @Autowired
     RestTemplate restTemplate;
 
-    public String hiService(String name) {
-        return restTemplate.getForObject("http://WH-USER/hi?name="+name,String.class);
+    public String hiService(String id) {
+        return restTemplate.getForObject("http://WH-USER/getuserbyid?id="+id,String.class);
     }
 }
