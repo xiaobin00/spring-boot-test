@@ -27,7 +27,7 @@ import java.sql.SQLException;
 public class DruidSource {
     // 精确到 master 目录，以便跟其他数据源隔离
     static final String PACKAGE = "com.wh.user.mapper";
-    static final String MAPPER_LOCATION = "classpath:com/wh/user/mapper/*.xml";
+    static final String MAPPER_LOCATION = "classpath:mapper/*.xml";
 
     @Value("${spring.datasource.url}")
     private String dbUrl;

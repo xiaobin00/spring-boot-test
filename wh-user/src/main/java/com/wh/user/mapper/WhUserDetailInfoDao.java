@@ -18,39 +18,5 @@ import java.util.List;
 @Mapper
 public interface WhUserDetailInfoDao extends BaseDaoable<WhUserDetailInfo> {
 
-    @Override
-    long insert(WhUserDetailInfo var1);
 
-    @Override
-    long insertBatch(List<WhUserDetailInfo> var1);
-
-    @Override
-    long update(WhUserDetailInfo var1);
-
-    @Override
-    long updateMap(Object var1, Object var2);
-
-    @Override
-    long deleteByKey(Object var1);
-
-    @Override
-    long delete(Object var1);
-
-    @Override
-    long deleteBatch(Object var1);
-
-    @Override
-    WhUserDetailInfo fetch(Object var1);
-
-    @Override
-    long count(Object var1);
-
-    @Override
-    List<WhUserDetailInfo> list(Object var1, Sort var2);
-
-    @Override
-    List<WhUserDetailInfo> page(PageRequest var1, Object var2);
-
-    @Override
-    WhUserDetailInfo query(Object var1);
 }
