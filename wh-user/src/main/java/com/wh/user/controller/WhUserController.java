@@ -15,7 +15,7 @@ public class WhUserController {
     private WhUserService userService;
 
     @RequestMapping("/getuserbyid")
-    public Object getUser(@RequestParam("id") Object id){
-            return userService.getUserInfo(id);
+    public Object getUser(@RequestParam("id") Object id) {
+        return userService.getUserInfo(id);
     }
 }

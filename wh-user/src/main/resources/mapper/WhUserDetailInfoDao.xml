@@ -11,16 +11,16 @@
 <mapper namespace="com.wh.user.mapper.WhUserDetailInfoDao">
     <!-- 结果集 -->
     <resultMap id="dataResult" type="com.wh.user.entity.WhUserDetailInfo">
-            <result property="id" column="ID"/>
-            <result property="openId" column="open_id"/>
-            <result property="name" column="NAME"/>
-            <result property="mobile" column="mobile"/>
-            <result property="company" column="company"/>
-            <result property="address" column="address"/>
-            <result property="idCard" column="id_card"/>
-            <result property="email" column="email"/>
-            <result property="job" column="job"/>
-            <result property="createTime" column="create_time"/>
+        <result property="id" column="ID"/>
+        <result property="openId" column="open_id"/>
+        <result property="name" column="NAME"/>
+        <result property="mobile" column="mobile"/>
+        <result property="company" column="company"/>
+        <result property="address" column="address"/>
+        <result property="idCard" column="id_card"/>
+        <result property="email" column="email"/>
+        <result property="job" column="job"/>
+        <result property="createTime" column="create_time"/>
     </resultMap>
     <!-- 表名 -->
     <sql id='TABLE_NAME'>wh_user_detail_info</sql>
@@ -51,28 +51,28 @@
            #{e.createTime:TIMESTAMP}
     </sql>
     <sql id="set-part">
-          <if test="e.id != null">ID = #{e.id:VARCHAR}, </if>
-          <if test="e.openId != null">open_id = #{e.openId:VARCHAR}, </if>
-          <if test="e.name != null">NAME = #{e.name:VARCHAR}, </if>
-          <if test="e.mobile != null">mobile = #{e.mobile:VARCHAR}, </if>
-          <if test="e.company != null">company = #{e.company:VARCHAR}, </if>
-          <if test="e.address != null">address = #{e.address:VARCHAR}, </if>
-          <if test="e.idCard != null">id_card = #{e.idCard:VARCHAR}, </if>
-          <if test="e.email != null">email = #{e.email:VARCHAR}, </if>
-        <if test="e.job != null">job = #{e.job:VARCHAR}, </if>
-          <if test="e.createTime != null">create_time = #{e.createTime:TIMESTAMP}, </if>
+        <if test="e.id != null">ID = #{e.id:VARCHAR},</if>
+        <if test="e.openId != null">open_id = #{e.openId:VARCHAR},</if>
+        <if test="e.name != null">NAME = #{e.name:VARCHAR},</if>
+        <if test="e.mobile != null">mobile = #{e.mobile:VARCHAR},</if>
+        <if test="e.company != null">company = #{e.company:VARCHAR},</if>
+        <if test="e.address != null">address = #{e.address:VARCHAR},</if>
+        <if test="e.idCard != null">id_card = #{e.idCard:VARCHAR},</if>
+        <if test="e.email != null">email = #{e.email:VARCHAR},</if>
+        <if test="e.job != null">job = #{e.job:VARCHAR},</if>
+        <if test="e.createTime != null">create_time = #{e.createTime:TIMESTAMP},</if>
     </sql>
     <sql id="where-part">
-            <if test="w.id != null and w.id !=''">and T.ID = #{w.id} </if>
-            <if test="w.openId != null and w.openId !=''">and T.open_id = #{w.openId} </if>
-            <if test="w.name != null and w.name !=''">and T.NAME = #{w.name} </if>
-            <if test="w.mobile != null and w.mobile !=''">and T.mobile = #{w.mobile} </if>
-            <if test="w.company != null and w.company !=''">and T.company = #{w.company} </if>
-            <if test="w.address != null and w.address !=''">and T.address = #{w.address} </if>
-            <if test="w.idCard != null and w.idCard !=''">and T.id_card = #{w.idCard} </if>
-            <if test="w.email != null and w.email !=''">and T.email = #{w.email} </if>
-            <if test="w.job != null and w.job !=''">and T.job = #{w.job} </if>
-            <if test="w.createTime != null and w.createTime !=''">and T.create_time = #{w.createTime} </if>
+        <if test="w.id != null and w.id !=''">and T.ID = #{w.id}</if>
+        <if test="w.openId != null and w.openId !=''">and T.open_id = #{w.openId}</if>
+        <if test="w.name != null and w.name !=''">and T.NAME = #{w.name}</if>
+        <if test="w.mobile != null and w.mobile !=''">and T.mobile = #{w.mobile}</if>
+        <if test="w.company != null and w.company !=''">and T.company = #{w.company}</if>
+        <if test="w.address != null and w.address !=''">and T.address = #{w.address}</if>
+        <if test="w.idCard != null and w.idCard !=''">and T.id_card = #{w.idCard}</if>
+        <if test="w.email != null and w.email !=''">and T.email = #{w.email}</if>
+        <if test="w.job != null and w.job !=''">and T.job = #{w.job}</if>
+        <if test="w.createTime != null and w.createTime !=''">and T.create_time = #{w.createTime}</if>
     </sql>
     <!-- 新增 -->
     <insert id="insert" useGeneratedKeys="true" keyProperty="e.id">
@@ -126,11 +126,11 @@
     <delete id="deleteByKey">
         DELETE FROM
         <include refid="TABLE_NAME"/>
-        WHERE  id = #{key}
+        WHERE id = #{key}
     </delete>
 
     <!-- 根据条件删除  -->
-    <delete id="delete" >
+    <delete id="delete">
         DELETE FROM
         <include refid="TABLE_NAME"/>
         <where>
@@ -149,16 +149,20 @@
     </delete>
 
     <select id="fetch" resultMap="dataResult">
-         SELECT T.* FROM
-        <include refid="TABLE_NAME"/> T
+        SELECT T.* FROM
+        <include refid="TABLE_NAME"/>
+        T
         <where>
             T.id = #{key}
         </where>
     </select>
 
     <select id="query" resultMap="dataResult">
-        select <include refid="column-part"/> from
-        <include refid="TABLE_NAME"/> T
+        select
+        <include refid="column-part"/>
+        from
+        <include refid="TABLE_NAME"/>
+        T
         <where>
             <include refid="where-part"/>
         </where>
@@ -168,7 +172,8 @@
     <!-- 根据条件查询总 -->
     <select id="count" resultType="long">
         SELECT COUNT(*) FROM
-        <include refid="TABLE_NAME"/> T
+        <include refid="TABLE_NAME"/>
+        T
         <where>
             <include refid="where-part"/>
         </where>
@@ -176,25 +181,27 @@
     <!-- 根据条件查询 -->
     <select id="list" resultMap="dataResult">
         SELECT T.* FROM
-        <include refid="TABLE_NAME"/> T
+        <include refid="TABLE_NAME"/>
+        T
         <where>
             <include refid="where-part"/>
         </where>
         <if test="sort != null">
-          <foreach collection="sort" item="s" index="index" separator="," open="order by ">
-              ${s.property} ${s.direction}
-          </foreach>
+            <foreach collection="sort" item="s" index="index" separator="," open="order by ">
+                ${s.property} ${s.direction}
+            </foreach>
         </if>
         <if test="sort == null">
             ORDER BY T.id DESC
         </if>
     </select>
 
-    <select id="page"  resultMap="dataResult">
+    <select id="page" resultMap="dataResult">
         SELECT T.* FROM
-        <include refid="TABLE_NAME"/> T
+        <include refid="TABLE_NAME"/>
+        T
         <where>
-              <include refid="where-part"/>
+            <include refid="where-part"/>
         </where>
         <if test="page.sort != null">
             <foreach collection="page.sort" item="s" index="index" separator="," open="order by ">
@@ -203,7 +210,7 @@
         </if>
         <if test="page.sort == null">
             ORDER BY T.id DESC
-             </if>
+        </if>
         LIMIT ${page.offset},${page.pageSize}
     </select>
 </mapper>

@@ -10,13 +10,12 @@ import org.springframework.stereotype.Service;
  * Created by admin on 2018/3/20.
  */
 @Service
-public class WhUserServiceImpl implements WhUserService{
+public class WhUserServiceImpl implements WhUserService {
     @Autowired
     private WhUserDetailInfoDao userDetailInfoDao;
+
     @Override
     public WhUserDetailInfo getUserInfo(Object id) {
-        WhUserDetailInfo whUserDetailInfo = new WhUserDetailInfo();
-        userDetailInfoDao.insert(whUserDetailInfo);
         return userDetailInfoDao.fetch(id);
     }
 }

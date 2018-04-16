@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
     @Autowired
     TestService testService;
+
     @RequestMapping(value = "/hi")
-    public String hi(@RequestParam String id){
-        return testService.hiService(id);
+    public String hi(@RequestParam String id) {
+        return testService.getTest(id);
     }
 }

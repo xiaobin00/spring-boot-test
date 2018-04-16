@@ -1,12 +1,11 @@
 package com.wh.user.entity;
 
 
-
 import java.io.Serializable;
 import java.util.Date;
 
 
-public class WhUserDetailInfo implements Serializable{
+public class WhUserDetailInfo implements Serializable {
 
     private String id;
     private String openId;

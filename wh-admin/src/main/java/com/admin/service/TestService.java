@@ -1,19 +1,22 @@
 package com.admin.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.admin.compoment.TestServiceHystrix;
+import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by admin on 2018/3/14.
  */
 @Service
-public class TestService
-{
-    @Autowired
-    RestTemplate restTemplate;
+@FeignClient(value = "wh-user", fallback = TestServiceHystrix.class)//设置熔断回退处理类，以及服务提供者
+public interface TestService {
 
-    public String hiService(String id) {
-        return restTemplate.getForObject("http://WH-USER/getuserbyid?id="+id,String.class);
-    }
+    //服务接口
+    @RequestMapping(method = RequestMethod.GET, value = "/getuserbyid")
+    String getTest(@RequestParam(value = "id") String id);
+
+
 }
