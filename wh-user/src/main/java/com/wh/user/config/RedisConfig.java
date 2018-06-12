@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
@@ -37,7 +36,7 @@ public class RedisConfig {
     private int minIdle;
 
     /**
-     * redis模板，存储关键字是字符串，值是Jdk序列化
+     * redis模板，存储关键字是字符串
      * @Description:
      * @param factory
      * @return
@@ -49,8 +48,7 @@ public class RedisConfig {
         RedisSerializer<String> redisSerializer = new StringRedisSerializer();
         redisTemplate.setKeySerializer(redisSerializer);
         redisTemplate.setHashKeySerializer(redisSerializer);
-        //JdkSerializationRedisSerializer序列化方式;
-        JdkSerializationRedisSerializer jdkRedisSerializer=new JdkSerializationRedisSerializer();
+        StringRedisSerializer jdkRedisSerializer=new StringRedisSerializer();
         redisTemplate.setValueSerializer(jdkRedisSerializer);
         redisTemplate.setHashValueSerializer(jdkRedisSerializer);
         redisTemplate.afterPropertiesSet();
