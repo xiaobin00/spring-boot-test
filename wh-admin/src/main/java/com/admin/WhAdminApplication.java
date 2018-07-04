@@ -8,6 +8,7 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
@@ -15,8 +16,10 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 @EnableFeignClients
 @EnableHystrix
-@EnableHystrixDashboard //熔断系统保护机制监控台 地址为：http://localhost:端口号/hystrix/
+//熔断系统保护机制监控台 地址为：http://localhost:端口号/hystrix/
+@EnableHystrixDashboard
 @EnableCircuitBreaker
+@EnableZuulProxy
 public class WhAdminApplication {
 
     public static void main(String[] args) {
